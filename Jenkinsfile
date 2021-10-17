@@ -1,14 +1,14 @@
 pipeline {
     agent { label 'master' }
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub-vakhobdevops')
+        DOCKERHUB_CREDENTIALS=credentials('67596594-5bde-46b0-8485-db87fff87f97')
     }
 
     stages {
 
         stage('Checkout') {
             steps{
-                git branch: 'main', url: 'git@github.com:Vakhob/jenkins-dockerhub.git'
+                git branch: 'main', url: 'git@github.com:bohdankits05/jenkins-dockerhub.git'
             }
         }
 
@@ -26,13 +26,13 @@ pipeline {
 
         stage('ImageTag') {
             steps {
-                sh 'docker tag devops14:latest vakhobdevops/devops14-docker:version2'
+                sh 'docker tag devops14:latest bkits/devops14-docker:version2'
             }
         }
 
         stage('Push') {
             steps {
-                sh 'docker push vakhobdevops/devops14-docker:version2'
+                sh 'docker push bkits/devops14-docker:version2'
             }
         }
     }
